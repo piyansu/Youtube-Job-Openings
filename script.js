@@ -1,4 +1,4 @@
-const apiKey = "AIzaSyCJcDBTc3lS4tF5nFqInlHimA1W4fIEwh4";
+const apiKey = "AIzaSyDmV9RR8w4zgPU_NXmTgOAtHcPimh9ASmw";
 const channels = [
   { id: "UCNTw5al-WwENuiTQjFT-Twg", name: "KN ACADEMY" },
   { id: "UCHoryD8Gefwa-1fKhPzBchg", name: "The Humble Coder" },
