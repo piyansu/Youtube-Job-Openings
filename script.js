@@ -15,7 +15,7 @@ async function fetchVideos(channelId) {
 async function fetchVideoDetails(videoIds) {
     if (videoIds.length === 0) return [];
     
-    const url = `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${videoIds.join(",")}&part=contentDetails`;
+    const url = `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${videoIds.join(",")}&part=contentDetails,snippet`;
     const response = await fetch(url);
     const data = await response.json();
     
@@ -29,6 +29,26 @@ function isLongVideo(duration) {
     const seconds = match[3] ? parseInt(match[3]) : 0;
 
     return (hours + minutes + seconds) > 60; // Only include videos longer than 1 minute
+}
+
+// Convert ISO Date to "Time Ago" format
+function timeAgo(date) {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+    const intervals = [
+        { label: "year", seconds: 31536000 },
+        { label: "month", seconds: 2592000 },
+        { label: "week", seconds: 604800 },
+        { label: "day", seconds: 86400 },
+        { label: "hour", seconds: 3600 },
+        { label: "minute", seconds: 60 },
+    ];
+    for (const interval of intervals) {
+        const count = Math.floor(seconds / interval.seconds);
+        if (count > 0) {
+            return `${count} ${interval.label}${count !== 1 ? "s" : ""} ago`;
+        }
+    }
+    return "Just now";
 }
 
 async function loadVideos() {
@@ -62,6 +82,7 @@ async function loadVideos() {
                 const videoData = videos.find(v => v.id.videoId === videoId).snippet;
                 const title = videoData.title;
                 const thumbnail = videoData.thumbnails.medium.url;
+                const publishedAt = timeAgo(videoData.publishedAt); // Convert to time ago
                 
                 const videoElement = document.createElement("div");
                 videoElement.className = "video";
@@ -70,6 +91,7 @@ async function loadVideos() {
                         <img src="${thumbnail}" alt="${title}">
                     </a>
                     <p><a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">${title}</a></p>
+                    <p style="font-size: 12px; color: #bbb;">${publishedAt}</p> <!-- Time Ago -->
                 `;
                 videoRow.appendChild(videoElement);
             });
@@ -79,4 +101,3 @@ async function loadVideos() {
 
 // Load videos when the page loads
 window.onload = loadVideos;
-c
