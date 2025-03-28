@@ -3,6 +3,7 @@ const channels = [
   { id: "UCNTw5al-WwENuiTQjFT-Twg", name: "KN ACADEMY" },
   { id: "UCHoryD8Gefwa-1fKhPzBchg", name: "The Humble Coder" },
   { id: "UCcyogDO_BD5HS7YlySkTELQ", name: "Online Learning" },
+  { id: "UCdpSMCd3kmLBNG8GSe1GWGA", name: "Prime Coding" },
 ];
 
 async function fetchVideos(channelId) {
