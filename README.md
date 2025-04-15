@@ -84,7 +84,7 @@ Please **do not copy or use** the content/code for **commercial purposes** witho
 ## 🌐 Connect with Me
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-blueviolet?style=flat&logo=vercel)](https://your-portfolio-link.com)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/piyansu-saha)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/piyansuwebdeveloper)  
 [![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/piyansu)
 
 ---
